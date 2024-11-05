@@ -4,7 +4,7 @@ import gsap from "gsap";
 const ParallaxContainer = ({
   icon = "x",
   hoverColor = "blue-600",
-  defaultColor = "black",
+  defaultColor = "gray-500",
 }) => {
   const containerRef = useRef(null);
   const circleRef = useRef(null);
@@ -30,8 +30,8 @@ const ParallaxContainer = ({
     };
 
     const callParallax = (e) => {
-      parallaxIt(e, circle, 30);
-      parallaxIt(e, icon, 50);
+      parallaxIt(e, circle, 20);
+      parallaxIt(e, icon, 30);
     };
 
     const parallaxIt = (e, target, movement) => {
@@ -67,12 +67,12 @@ const ParallaxContainer = ({
     >
       <div
         ref={circleRef}
-        className={`circle absolute duration-150 h-[50px] w-[50px] border-2 m-10 rounded-full border-${defaultColor} group-hover:border-${hoverColor}`}
+        className={`circle  absolute duration-150 h-[50px] w-[50px] border-2 m-10 rounded-full border-${defaultColor} group-hover:border-${hoverColor}`}
       ></div>
       <div
         ref={iconRef}
-        className={`icon w-6 text-center group-hover:text-${hoverColor}`}
-        style={{ color: `var(--${defaultColor})` }}
+        className={`icon text-center items-center 
+         group-hover:text-blue-800 `}
       >
         {icon}
       </div>
