@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedText = ({ className, children }) => {
   const textRef = useRef(null);
@@ -19,7 +22,6 @@ const AnimatedText = ({ className, children }) => {
         }
       });
     };
-    console.log(children);
 
     // Load SplitType and then animate
     loadSplitType().then(() => {
@@ -29,7 +31,7 @@ const AnimatedText = ({ className, children }) => {
         tagName: "span",
       });
 
-      // Animate each word in the text
+      // Animate each word in the text with ScrollTrigger
       gsap.from(textRef.current.querySelectorAll(".word"), {
         y: "100%",
         opacity: 0,
@@ -37,16 +39,18 @@ const AnimatedText = ({ className, children }) => {
         duration: 0.5,
         ease: "power1.out",
         stagger: 0.1,
+        scrollTrigger: {
+          trigger: textRef.current,
+          start: "top 80%",
+          markers: true,
+          toggleActions: "play reverse reverse reverse",
+        },
       });
     });
   }, []);
 
   return (
-    <div
-      ref={textRef}
-      animate="true"
-      className={`overflow-hidden ${className} `}
-    >
+    <div ref={textRef} className={`overflow-hidden ${className}`}>
       {children
         ? children
         : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, alias at. Reiciendis quasi dicta nisi veritatis error distinctio magnam? Similique?"}

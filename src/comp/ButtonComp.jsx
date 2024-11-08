@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { Color } from "three/src/Three.js";
 
 const AnimatedButton = ({ text = "text", classname }) => {
   const buttonRef = useRef(null);
