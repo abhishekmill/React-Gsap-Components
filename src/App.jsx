@@ -5,6 +5,7 @@ import { AiFillGithub } from "react-icons/ai";
 import ButtonComponent from "./comp/ButtonComp";
 import AnimatedText from "./comp/TextAnim";
 import Marquee from "./comp/Carousel";
+import ScrollMarquee from "./comp/ScrollCarousl";
 
 function App() {
   return (
@@ -18,6 +19,32 @@ function App() {
 
             <ButtonComponent text="Abhishek" classname={"font-semibold"} />
           </div>
+          <ScrollMarquee direction="right">
+            <div className="flex justify-around w-[100vw]">
+              <div>
+                <img className="w-16" src="./1.png" alt="" />
+              </div>
+              <div>
+                <img className="w-16" src="./2.png" alt="" />
+              </div>
+              <div>
+                <img className="w-16" src="./3.png" alt="" />
+              </div>
+            </div>
+          </ScrollMarquee>
+          <ScrollMarquee direction="left">
+            <div className="flex justify-around w-[100vw]">
+              <div>
+                <img className="w-16" src="./1.png" alt="" />
+              </div>
+              <div>
+                <img className="w-16" src="./2.png" alt="" />
+              </div>
+              <div>
+                <img className="w-16" src="./3.png" alt="" />
+              </div>
+            </div>
+          </ScrollMarquee>
         </div>
         <div className="m-10">
           <AnimatedText className={"font-semibold text-3xl "}>
@@ -28,16 +55,20 @@ function App() {
             sint earum aut? asewdawd
           </AnimatedText>
         </div>
-        <Marquee>
-          <div className="flex w-[100vw]">
-            <div>aw1dawdawd</div>
-            <div>awd2awdawd</div>
-            <div>awda3wdawd</div>
-            <div>aw1dawdawd</div>
-            <div>awd2awdawd</div>
-            <div>awda3wdawd</div>
+        <Marquee hoverPause speed={5}>
+          <div className="flex justify-around w-[100vw]">
+            <div>
+              <img className="w-16" src="./1.png" alt="" />
+            </div>
+            <div>
+              <img className="w-16" src="./2.png" alt="" />
+            </div>
+            <div>
+              <img className="w-16" src="./3.png" alt="" />
+            </div>
           </div>
         </Marquee>
+        <div className="w-full h-20"></div>
       </div>
     </>
   );
