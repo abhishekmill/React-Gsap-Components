@@ -13,7 +13,7 @@ const Preloader = () => {
     // Simulate loading progress
     const interval = setInterval(() => {
       setProgress((prev) => Math.min(prev + 1, 100));
-    }, 20);
+    }, 10);
 
     return () => clearInterval(interval);
   }, []);
@@ -52,27 +52,33 @@ const Preloader = () => {
 
       // Fade out the revealer when text animations complete
       tl.to(divs.current, {
-        duration: 1,
+        duration: 0.5,
         rotate: 50,
         scale: 10,
         width: "100vw",
         height: "50vh",
         ease: "power1.in",
       });
+      tl.to(revealerRef.current, {
+        duration: 0,
+        opacity: 0,
+      });
       tl.to(divs.current, {
-        duration: 1,
+        opacity: 1,
+        duration: 0.5,
+        background: "transparent",
         rotate: 90,
         height: "100vh",
         ease: "power1.in",
       });
 
-      tl.to(revealerRef.current, {
-        opacity: 1,
-        duration: 1.5,
+      tl.to(divs.current, {
+        opacity: 0,
+        duration: 0.5,
         ease: "power3.inOut",
-        delay: 0.5,
+        delay: 0,
         onComplete: () => {
-          document.querySelector("html").classList.remove(loaderRef.current);
+          loaderRef.current.style.display = "none";
         },
       });
     }
@@ -92,21 +98,20 @@ const Preloader = () => {
       </div>
       <div
         ref={text2Ref}
-        className="text-center z-10 opacity-0 absolute text-white text-2xl"
+        className={`text-center z-10 opacity-0 absolute text-white text-2xl`}
       >
         Setting things up...
       </div>
       <div
         ref={divs}
-        className="   
-               bg-white
-           absolute z-10
-      
-      "
-      >
-        {" "}
-        A
-      </div>
+        style={{ width: `${0.8 * progress}vw` }}
+        className={`
+          mt-10
+          h-1
+          bg-white
+          absolute z-10
+          `}
+      ></div>
 
       {/* Black revealer div */}
       <div
