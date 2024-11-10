@@ -8,6 +8,7 @@ const Preloader = () => {
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
   const divs = useRef(null);
+  const div2 = useRef(null);
 
   useEffect(() => {
     // Simulate loading progress
@@ -51,6 +52,11 @@ const Preloader = () => {
         });
 
       // Fade out the revealer when text animations complete
+
+      tl.to(div2.current, {
+        opacity: 0,
+      });
+
       tl.to(divs.current, {
         duration: 0.5,
         rotate: 50,
@@ -112,11 +118,15 @@ const Preloader = () => {
           absolute z-10
           `}
       ></div>
+      <div
+        ref={div2}
+        className="w-full absolute z-[11] mt-[120px] h-20 bg-black "
+      ></div>
 
       {/* Black revealer div */}
       <div
         ref={revealerRef}
-        className="revealer absolute top-0 left-0 w-full h-full bg-black"
+        className="revealer absolute  top-0 left-0 w-full h-full bg-black"
       ></div>
     </div>
   );
