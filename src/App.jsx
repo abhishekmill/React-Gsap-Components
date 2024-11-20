@@ -8,6 +8,7 @@ import Marquee from "./comp/Carousel";
 import ScrollMarquee from "./comp/ScrollCarousl";
 import Preloader from "./comp/Preloader";
 import { useEffect, useState } from "react";
+import CustomCursor from "./comp/CustomCursor";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,10 @@ function App() {
       <Preloader loading={loading} />
 
       {!loading && (
-        <div className="w-full  h-[200vh] ">
+        <div className="w-full  h-[200vh]  ">
+          <CustomCursor>
+            <div className="w-10 h-10 border border-black"></div>
+          </CustomCursor>
           <div>
             <div className="flex h-screen items-center justify-center">
               <ParallaxContainer icon={<GiCoffeeCup className="text-xl" />} />
