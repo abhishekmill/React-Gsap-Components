@@ -64,10 +64,7 @@ function App() {
                 </div>
               </div>
             </ScrollMarquee>
-            <div
-              className="w-full h-20
-            "
-            ></div>
+           
             <ScrollMarquee direction="left">
               <div className="flex justify-around w-[100vw]">
                 <div>
